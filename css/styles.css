@@ -23,43 +23,51 @@ body {
     background-color: var(--color-fondo);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
 header {
     background-color: var(--color-primario);
     color: var(--color-blanco);
-    padding: 1rem 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     letter-spacing: 1px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 nav a {
     color: var(--color-blanco);
     text-decoration: none;
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 6px 10px;
     border-radius: 4px;
+    font-size: 0.95rem;
 }
 
 nav a:hover {
     background-color: var(--color-primario-oscuro);
 }
 
-
 main {
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1050px;
     margin: 20px auto;
     padding: 0 15px;
 }
@@ -74,7 +82,7 @@ section {
 
 h2 {
     color: var(--color-primario);
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     border-bottom: 2px solid var(--color-primario-claro);
     padding-bottom: 5px;
 }
@@ -92,23 +100,63 @@ a {
     color: var(--color-primario);
 }
 
+
+.grilla-catalogo,
+.grilla-equipo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta-equipo,
 section article {
     border: 1px solid var(--color-borde);
     border-radius: 6px;
     padding: 15px;
-    margin-bottom: 15px;
     background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
 }
 
-article img, .foto-detalle {
+.tarjeta-equipo img,
+article img {
     width: 100%;
-    max-width: 280px;
-    height: auto;
+    height: 180px;
+    object-fit: cover;
     border-radius: 4px;
-    display: block;
     margin-bottom: 10px;
 }
 
+.puesto {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-bottom: 8px;
+}
+
+
+.linea-tiempo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.hito-tiempo {
+    border-left: 3px solid var(--color-primario);
+    padding-left: 15px;
+    background-color: var(--color-fondo-suave);
+    padding: 12px;
+    border-radius: 0 6px 6px 0;
+}
+
+.hito-tiempo .fecha {
+    font-weight: bold;
+    color: var(--color-primario-oscuro);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 4px;
+}
 
 .boton, .boton-volver {
     display: inline-block;
@@ -118,12 +166,11 @@ article img, .foto-detalle {
     text-decoration: none;
     border-radius: 4px;
     font-weight: bold;
-    margin-top: 5px;
+    text-align: center;
 }
 
 .boton:hover, .boton-volver:hover {
     background-color: var(--color-primario-oscuro);
-    color: var(--color-blanco);
 }
 
 table {
@@ -141,41 +188,19 @@ table th, table td {
 table th {
     background-color: var(--color-fondo-suave);
     color: var(--color-primario-oscuro);
-    width: 35%;
 }
-
 
 fieldset {
     border: 1px solid var(--color-borde);
     border-radius: 6px;
-    padding: 15px 20px;
+    padding: 15px;
     margin-bottom: 20px;
 }
 
 legend {
     font-weight: bold;
     color: var(--color-primario);
-    padding: 0 8px;
-}
-
-fieldset.fieldset-opciones {
-    border: none;
-    padding: 0;
-}
-
-fieldset.fieldset-opciones input[type="checkbox"] {
-    width: auto;
-    margin-right: 8px;
-}
-
-form p {
-    margin-bottom: 15px;
-}
-
-label {
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 5px;
+    padding: 0 6px;
 }
 
 input[type="text"],
@@ -186,18 +211,10 @@ input[type="date"],
 select,
 textarea {
     width: 100%;
-    max-width: 500px;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: var(--color-primario);
-    outline: none;
 }
 
 button {
@@ -209,10 +226,8 @@ button {
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-}
-
-button:hover {
-    background-color: var(--color-primario-oscuro);
+    width: 100%;
+    max-width: 250px;
 }
 
 footer {
@@ -238,6 +253,42 @@ footer h3 {
     color: var(--color-primario-claro);
 }
 
-footer p {
-    margin-bottom: 5px;
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    nav a {
+        display: block;
+        padding: 8px;
+        background-color: var(--color-primario-oscuro);
+    }
+
+    .grilla-catalogo,
+    .grilla-equipo,
+    .linea-tiempo {
+        grid-template-columns: 1fr; 
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    table th, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table th {
+        background-color: var(--color-primario-claro);
+        color: var(--color-primario-oscuro);
+    }
 }
