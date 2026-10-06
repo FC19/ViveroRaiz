@@ -292,3 +292,55 @@ footer h3 {
         color: var(--color-primario-oscuro);
     }
 }
+
+a, button, input, select, textarea, .boton {
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.4);
+}
+
+.boton:hover, .boton-accion:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+.mensaje {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.mensaje-exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.tabla-intranet {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.tabla-intranet th, .tabla-intranet td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tabla-intranet th {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.thumb-tabla {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}

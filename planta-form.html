@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - Formulario de Planta</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>VIVERO RAÍZ - INTRANET</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sitio Público</a></li>
+                <li><a href="listado.html">Listado</a></li>
+                <li><a href="planta-form.html" class="activo">Nueva Planta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor-intranet">
+        <h2>Cargar / Editar Planta</h2>
+
+    
+        <div class="mensaje mensaje-exito">
+            <p>La planta se guardó correctamente.</p>
+        </div>
+
+        <form action="#" method="POST" class="formulario-intranet">
+            
+            <fieldset>
+                <legend>Información General</legend>
+
+                <label for="nombre">Nombre Común</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ej: Costilla de Adán">
+
+                <label for="nombreCientifico">Nombre Científico</label>
+                <input type="text" id="nombreCientifico" name="nombreCientifico" required placeholder="Ej: Monstera deliciosa">
+
+                <label for="categoria">Categoría</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="">Elegí una opción</option>
+                    <option value="interior">Interior</option>
+                    <option value="exterior">Exterior</option>
+                    <option value="suculenta">Suculenta</option>
+                    <option value="aromatica">Aromática</option>
+                </select>
+
+                <label for="foto">URL de la Foto</label>
+                <input type="url" id="foto" name="foto" required placeholder="https://ejemplo.com/foto.jpg">
+            </fieldset>
+
+            <fieldset>
+                <legend>Cuidados y Características</legend>
+
+                <p class="label-titulo">Luz exigida</p>
+                <div class="grupo-opciones">
+                    <label><input type="radio" name="luz" value="sol pleno"> Sol pleno</label>
+                    <label><input type="radio" name="luz" value="media sombra"> Media sombra</label>
+                    <label><input type="radio" name="luz" value="sombra"> Sombra</label>
+                </div>
+
+                <label for="riego">Nivel de Riego</label>
+                <select id="riego" name="riego" required>
+                    <option value="bajo">Bajo</option>
+                    <option value="medio">Medio</option>
+                    <option value="alto">Alto</option>
+                </select>
+
+                <label class="checkbox-simple">
+                    <input type="checkbox" name="aptaMascotas" value="si"> ¿Es apta para mascotas?
+                </label>
+
+                <p class="label-titulo">Etiquetas</p>
+                <div class="grupo-opciones">
+                    <label><input type="checkbox" name="etiquetas" value="purificadora"> Purificadora</label>
+                    <label><input type="checkbox" name="etiquetas" value="floracion"> Floración</label>
+                    <label><input type="checkbox" name="etiquetas" value="colgante"> Colgante</label>
+                    <label><input type="checkbox" name="etiquetas" value="resistente"> Resistente</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Inventario y Precios</legend>
+
+                <label for="precio">Precio ($)</label>
+                <input type="number" id="precio" name="precio" step="0.01" required placeholder="0.00">
+
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" name="stock" required placeholder="0">
+
+                <label for="fechaingreso">Fecha de Ingreso</label>
+                <input type="date" id="fechaingreso" name="fechaingreso" required>
+
+                <label for="notas">Notas de Cuidado / Observaciones</label>
+                <textarea id="notas" name="notas" rows="4" placeholder="Escribí aquí los cuidados particulares..."></textarea>
+            </fieldset>
+
+            <button type="submit" class="boton boton-principal">Guardar Planta</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>2026 Vivero Raíz - TP Integrador</p>
+    </footer>
+
+</body>
+</html>

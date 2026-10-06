@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - Listado de Plantas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>VIVERO RAÍZ - INTRANET</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sitio Público</a></li>
+                <li><a href="listado.html" class="activo">Listado</a></li>
+                <li><a href="planta-form.html">Nueva Planta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor-intranet">
+        <h2>Gestión de Inventario</h2>
+        
+        <div class="acciones-tabla">
+            <a href="planta-form.html" class="boton boton-principal">+ Agregar Nueva Planta</a>
+        </div>
+
+        <table class="tabla-intranet">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="img/Monstera.jpg" alt="Monstera" class="thumb-tabla"></td>
+                    <td>Costilla de Adán</td>
+                    <td>Interior</td>
+                    <td>$12.400</td>
+                    <td>15</td>
+                    <td>
+                        <a href="planta-form.html" class="boton-accion editar">Editar</a>
+                        <a href="#" class="boton-accion eliminar">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>2026 Vivero Raíz - TP Integrador</p>
+    </footer>
+
+</body>
+</html>
