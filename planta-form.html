@@ -15,6 +15,7 @@
                 <li><a href="index.html">Sitio Público</a></li>
                 <li><a href="listado.html">Listado</a></li>
                 <li><a href="planta-form.html" class="activo">Nueva Planta</a></li>
+                <li><a href="#" id="btn-logout">Cerrar sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -23,11 +24,9 @@
         <h2>Cargar / Editar Planta</h2>
 
     
-        <div class="mensaje mensaje-exito">
-            <p>La planta se guardó correctamente.</p>
-        </div>
+        <div id="mensaje-form" class="mensaje oculto"></div>
 
-        <form action="#" method="POST" class="formulario-intranet">
+        <form id="form-planta" class="formulario-intranet">
             
             <fieldset>
                 <legend>Información General</legend>
@@ -48,7 +47,7 @@
                 </select>
 
                 <label for="foto">URL de la Foto</label>
-                <input type="url" id="foto" name="foto" required placeholder="https://ejemplo.com/foto.jpg">
+                <input type="text" id="foto" name="foto" required placeholder="https://ejemplo.com/foto.jpg">
             </fieldset>
 
             <fieldset>
@@ -85,10 +84,10 @@
                 <legend>Inventario y Precios</legend>
 
                 <label for="precio">Precio ($)</label>
-                <input type="number" id="precio" name="precio" step="0.01" required placeholder="0.00">
+                <input type="number" id="precio" name="precio" min="0" step="100" required>
 
                 <label for="stock">Stock</label>
-                <input type="number" id="stock" name="stock" required placeholder="0">
+                <input type="number" id="stock" name="stock" min="0" step="1" required>
 
                 <label for="fechaingreso">Fecha de Ingreso</label>
                 <input type="date" id="fechaingreso" name="fechaingreso" required>

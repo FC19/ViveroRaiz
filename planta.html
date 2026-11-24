@@ -25,15 +25,41 @@
         <p><a href="catalogo.html" class="boton-volver">Volver al catálogo</a></p>
 
 
-        <section class="detalle-planta">
-            <article>
-                <h2>Monstera Deliciosa</h2>
-                <p><em>Monstera deliciosa</em></p>
-                
-                <img src="img/Monstera.jpg" alt="Planta Monstera Deliciosa en maceta" class="foto-detalle">
-                
-                <p><strong>Precio: $18.500</strong></p>
-                <p><strong>Stock disponible:</strong> 12 unidades</p>
+      <section>
+    <h3>Filtrar búsqueda</h3>
+    <form id="form-filtros">
+        <p>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria">
+                <option value="todas">Todas</option>
+                <option value="interior">Interior</option>
+                <option value="exterior">Exterior</option>
+                <option value="suculenta">Suculenta</option>
+                <option value="aromatica">Aromática</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="luz">Luz:</label>
+            <select id="luz" name="luz">
+                <option value="todas">Cualquiera</option>
+                <option value="sol pleno">Sol pleno</option>
+                <option value="media sombra">Media sombra</option>
+                <option value="sombra">Sombra</option>
+            </select>
+        </p>
+
+        <p>
+            <input type="checkbox" id="mascotas" name="mascotas" value="si">
+            <label for="mascotas">Apta para mascotas</label>
+        </p>
+    </form>
+</section>
+
+<section>
+    <h3>Plantas disponibles (<span id="contador-plantas">0</span>)</h3>
+    <div id="grilla-catalogo" class="grilla-catalogo"></div>
+</section>
                 
                 <p><a href="contacto.html" class="boton">Consultar por esta planta</a></p>
             </article>
