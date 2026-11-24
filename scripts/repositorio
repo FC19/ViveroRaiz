@@ -1,0 +1,117 @@
+const STORAGE_PLANTAS = "vivero_raiz_plantas";
+
+const PLANTAS_INICIALES = [
+    {
+        id: 1,
+        nombre: "Monstera Deliciosa",
+        nombreCientifico: "Monstera deliciosa",
+        categoria: "interior",
+        foto: "img/Monstera.jpg",
+        luz: "media sombra",
+        riego: "medio",
+        aptaMascotas: false,
+        etiquetas: ["purificadora", "resistente"],
+        precio: 18500,
+        stock: 12,
+        fechaIngreso: "2026-03-10",
+        notas: "Limpiar sus hojas con un trapo húmedo cada 15 días. Colocar tutor a medida que crece."
+    },
+    {
+        id: 2,
+        nombre: "Sansevieria",
+        nombreCientifico: "Dracaena trifasciata",
+        categoria: "interior",
+        foto: "img/Sansevieria.jpg",
+        luz: "sombra",
+        riego: "bajo",
+        aptaMascotas: false,
+        etiquetas: ["purificadora", "resistente"],
+        precio: 12000,
+        stock: 4,
+        fechaIngreso: "2026-03-15",
+        notas: "Tolera poca luz y riegos espaciados. Evitar encharcar la tierra."
+    },
+    {
+        id: 3,
+        nombre: "Potus Dorado",
+        nombreCientifico: "Epipremnum aureum",
+        categoria: "interior",
+        foto: "img/Potus.jpg",
+        luz: "media sombra",
+        riego: "medio",
+        aptaMascotas: false,
+        etiquetas: ["colgante", "purificadora"],
+        precio: 9500,
+        stock: 20,
+        fechaIngreso: "2026-04-01",
+        notas: "Ideal para estantes altos o macetas colgantes. Regar cuando la capa superior esté seca."
+    }
+];
+
+const RepositorioPlantas = {
+    obtenerTodas() {
+        const guardado = localStorage.getItem(STORAGE_PLANTAS);
+        if (!guardado) {
+            const iniciales = PLANTAS_INICIALES.map(dato => Planta.fromLiteral(dato));
+            this.guardarTodas(iniciales);
+            return iniciales;
+        }
+        try {
+            const literales = JSON.parse(guardado);
+            return literales.map(dato => Planta.fromLiteral(dato));
+        } catch {
+            const iniciales = PLANTAS_INICIALES.map(dato => Planta.fromLiteral(dato));
+            this.guardarTodas(iniciales);
+            return iniciales;
+        }
+    },
+
+    guardarTodas(plantas) {
+        const literales = plantas.map(planta => planta.toLiteral());
+        localStorage.setItem(STORAGE_PLANTAS, JSON.stringify(literales));
+    },
+
+    obtenerPorId(id) {
+        const idNum = Number(id);
+        return this.obtenerTodas().find(planta => planta.id === idNum) || null;
+    },
+
+    crear(datos) {
+        const plantas = this.obtenerTodas();
+        const maxId = plantas.reduce((max, p) => Math.max(max, p.id), 0);
+        const nueva = new Planta({ ...datos, id: maxId + 1 });
+        plantas.push(nueva);
+        this.guardarTodas(plantas);
+        return nueva;
+    },
+
+    actualizar(id, datos) {
+        const idNum = Number(id);
+        const plantas = this.obtenerTodas();
+        const indice = plantas.findIndex(p => p.id === idNum);
+        if (indice === -1) return null;
+
+        const actualizada = new Planta({ ...datos, id: idNum });
+        plantas[indice] = actualizada;
+        this.guardarTodas(plantas);
+        return actualizada;
+    },
+
+    eliminar(id) {
+        const idNum = Number(id);
+        const plantas = this.obtenerTodas();
+        const restantes = plantas.filter(p => p.id !== idNum);
+        if (restantes.length === plantas.length) return false;
+        this.guardarTodas(restantes);
+        return true;
+    },
+
+    obtenerResumen() {
+        const plantas = this.obtenerTodas();
+        return {
+            totalEspecies: plantas.length,
+            unidadesTotales: plantas.reduce((total, p) => total + p.stock, 0),
+            stockBajo: plantas.filter(p => p.stock <= 5).length
+        };
+    }
+};
